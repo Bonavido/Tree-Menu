@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #555555;
+  text-align: left;
+  background-color: #f8f8f8;
+}
+	@font-face {
+	font-family: icomoon;
+	src: url('fonts/icomoon.ttf');
+}
+.file-tree {
+  margin-bottom: 0;
+  padding-left: 20px;
+  list-style: none;
+  overflow: hidden; }
+  
+.file-tree ul {
+  list-style: none;
+  display: none;
+  padding-left: 30px; }
+	
+.file-tree li {
+  position: relative;
+  padding: 5px 0;
+  border-radius: 0.25rem;
+  cursor: auto;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 600; }
+	
+.file-tree li::before {
+  content: "\e926"; /* papka zakr */
+  display: inline-block;
+  text-align: center;
+  width: 30px;
+  margin-right: .25rem;
+  vertical-align: middle;
+  font-family: 'icomoon' !important; 
+  font-size: 1rem;
+  color: #999999; }
+  
+.file-tree li span {
+  color: #999999;
+  font-weight: 400;
+  font-size: .75rem; }
+  
+.file-tree .file-tree-folder {
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  transition-delay: 0s;
+  cursor: pointer; }
+  
+.file-tree .file-tree-folder::before {
+   content: "\e92f"; /* papka zakr */
+   font-size: 1.25rem; }
+   
+.file-tree .file-tree-folder.open::after {
+
+   -webkit-transform: rotate(360deg);
+   -moz-transform: rotate(360deg);
+   transform: rotate(360deg); 
+/*
+   -webkit-transform: rotate(180deg);
+   -moz-transform: rotate(180deg);
+   transform: rotate(180deg); 
+*/
+   }
+   
+.file-tree .file-tree-folder.open > ul {
+   display: block; }
+	  
+.file-tree .file-tree-folder::after {
+   -webkit-transition: all 0.2s;
+   -moz-transition: all 0.2s;
+   transition: all 0.2s;
+   -webkit-transition-delay: 0s;
+   -moz-transition-delay: 0s;
+   transition-delay: 0s;
+   position: absolute;
+   top: .8rem;
+   left: -1em;
+   
+   -webkit-transform: rotate(180deg);
+   -moz-transform: rotate(180deg);
+   transform: rotate(180deg); 
+   
+   content: "\ea50"; /* strelka */
+   display: block;
+   text-align: center;
+   width: 1em;
+   line-height: 1em;
+   font-family: 'icomoon' !important; 
+   font-size: 1rem;
+   color: #999999; }
+   
+.file-tree .file-tree-folder.open::before {
+   content: "\e930"; } /* papka otkr */
+	  
+.file-tree .file-tree-folder.empty::after {
+   display: none; }
+</style>
+    <title>Tree</title>
+
+
+  </head>
+  <body>
+
+      <div class="container">
+
+
+
+
+        
+
+
+            <!-- file tree -->
+
+              <div class="row">
+                <div class="col">
+             
+                        <ul class="file-tree">
+                          <li class="file-tree-folder empty">Images
+                            <span>description</span>
+                          </li>
+                          <li class="file-tree-folder">CSS
+                            <span>description</span>
+                            <ul>
+                              <li>file name <span>description</span></li>
+                              <li>file name <span>description</span></li>
+                            </ul>
+                          </li>
+                          <li class="file-tree-folder">HTML
+                            <span>description</span>
+                            <ul>
+                              <li class="file-tree-folder">PAGES
+                                <span>description</span>
+                                <ul>
+                                  <li>file name <span>description</span></li>
+                                  <li>file name <span>description</span></li>
+                                  <li>file name <span>description</span></li>
+                                </ul>
+                              </li>
+                              <li>file name <span>description</span></li>
+                              <li>file name <span>description</span></li>
+                            </ul>
+                          </li>
+                          <li>index.html <span>description</span></li>
+                          <li>components.html <span>description</span></li>
+                        </ul>
+                      </div>
+                    </div>
+         
+
+            <!-- / file tree -->
+
+ </div>
+
+
+    <script src="vendor.js"></script>
+    <script>
+	  (function ($) {
+  "use strict";
+
+  var fn = {
+
+    // Launch Functions
+    Launch: function () {
+      fn.Filetree();
+    },
+
+    // File Tree
+    Filetree: function() {
+      var folder = $('.file-tree li.file-tree-folder'),
+          file = $('.file-tree li');
+
+      folder.on("click", function(a) {
+          $(this).children('ul').slideToggle(500, function() {
+              $(this).parent("li").toggleClass("open")
+          }), a.stopPropagation()
+      })
+
+      file.on('click', function(b){
+        b.stopPropagation();
+      })
+    },
+  };
+
+  $(document).ready(function () {
+    fn.Launch();
+  });
+
+})(jQuery);
+    </script>	
+  </body>
+</html>
